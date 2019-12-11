@@ -1,0 +1,50 @@
+<div id="signup">
+  <h1>Sign Up for Free</h1>
+  <form [formGroup]="signupForm" action="/" method="post">
+    <div class="top-row">
+      <div class="field-wrap">
+        <label [ngClass]="firstName.value !== '' ? 'active' : '' ">
+          First Name<span class="req">*</span>
+        </label>
+        <input type="text"
+               #firstName
+               [formControl]="signupForm.get('firstName')"
+               autocomplete="off"/>
+      </div>
+      <div class="field-wrap">
+        <label [ngClass]="lastName.value !== '' ? 'active' : '' ">
+          Last Name<span class="req">*</span>
+        </label>
+        <input type="text"
+               #lastName
+               [formControl]="signupForm.get('lastName')"
+               autocomplete="off"/>
+      </div>
+    </div>
+    <div class="field-wrap">
+      <label [ngClass]="email.value !== '' ? 'active' : '' ">
+        Email Address<span class="req">*</span>
+      </label>
+      <input type="email"
+             #email
+             [formControl]="signupForm.get('email')"
+             autocomplete="off"/>
+    </div>
+    <div class="field-wrap">
+      <label [ngClass]="password.value !== '' ? 'active' : ''">
+        Set A Password<span class="req">*</span>
+      </label>
+      <input type="password"
+             #password
+             [formControl]="signupForm.get('password')"
+             autocomplete="off"/>
+    </div>
+    <button type="submit"
+            [disabled]="signupForm.invalid"
+            [ngClass]="signupForm.invalid ? 'button-disable' : 'button-active'"
+            (click)="submit(signupForm.value)"
+            class="button button-block">
+      Get Started
+    </button>
+  </form>
+</div>

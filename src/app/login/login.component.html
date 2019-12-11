@@ -1,0 +1,35 @@
+<div id="login">
+  <h1>Welcome Back!</h1>
+
+  <form #form = "ngForm" action="/" method="post">
+    <div class="field-wrap">
+      <label [ngClass]="emailControl.value === '' ? '' : 'active'">
+        Email Address<span class="req">*</span>
+      </label>
+      <input type="email"
+             required
+             ngModel
+             #emailControl = "ngModel"
+             name="email"
+             autocomplete="off"/>
+    </div>
+    <div class="field-wrap">
+      <label [ngClass]="passControl.value === '' ? '' : 'active'">
+        Password<span class="req">*</span>
+      </label>
+      <input type="password"
+             required
+             ngModel
+             #passControl = "ngModel"
+             name="password"
+             minlength="6"
+             autocomplete="off"
+      />
+    </div>
+    <p class="forgot"><a href="#">Forgot Password?</a></p>
+    <button class="button button-block"
+            [disabled]="form.invalid"
+            [ngClass]="form.invalid ? 'button-disable' : 'button-active'"
+            (click)="login(form.value)">Log In</button>
+  </form>
+</div>
